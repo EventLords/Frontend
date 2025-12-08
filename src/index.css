@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-unify-purple text-white font-medium rounded-xl 
+           hover:bg-unify-purple-dark transition-all duration-200 
+           shadow-card hover:shadow-card-hover;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-unify-purple font-medium rounded-xl 
+           border-2 border-unify-purple hover:bg-unify-mint 
+           transition-all duration-200;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 bg-transparent text-white font-medium rounded-xl 
+           border-2 border-white hover:bg-white hover:text-unify-purple 
+           transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-6 
+           hover:shadow-card-hover transition-all duration-200;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-to-br from-unify-mint to-white rounded-2xl 
+           shadow-card p-6;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+           from-unify-purple to-unify-purple-dark;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* 3D Flip Animation Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
