@@ -263,11 +263,14 @@ const EditEventPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
       {/* Back Button */}
       <button
-        onClick={() => navigate('/organizer/dashboard')}
-        className="flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors"
-      >
-        <ArrowLeft size={18} />
-        <span className="text-sm">Înapoi la dashboard</span>
+       onClick={() => navigate('/organizer/dashboard')}
+         className="flex items-center gap-2 mb-6 transition-all 
+                     px-4 py-2 rounded-full border border-white/10 
+                     bg-white/5 text-white 
+                     hover:bg-[#3A3A7E] hover:border-[#4ECDC4]/50"
+        >
+       <ArrowLeft size={18} className="text-[#4ECDC4]" />
+       <span className="text-sm font-medium">Înapoi la dashboard</span>
       </button>
 
       {/* Form Card */}
