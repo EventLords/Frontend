@@ -118,3 +118,40 @@
     transform: translateX(0);
   }
 }
+/* --- STILURI CUSTOM PENTRU EVENIMENTUL CALENDAR --- */
+
+/* Clasa specifică pentru evenimentele înscrise (Verde/Teal din legendă) */
+.enrolled-event-date {
+    background-color: #4ECDC4 !important; /* Culoarea de accent */
+    color: #1F2937 !important;           
+    border-radius: 50% !important;        
+    font-weight: bold;
+}
+
+/* Clasa specifică pentru evenimentele disponibile, dar NU înscrise (Albastru din legendă) */
+.available-event-date {
+    background-color: #3B82F640 !important; /* Albastru semi-transparent */
+    border: 1px solid #3B82F6;
+    color: white !important;
+    border-radius: 50% !important; 
+}
+
+/* Stiluri generale Calendar (pentru a se potrivi cu fundalul) */
+.custom-react-calendar {
+    background: transparent !important; 
+    border: none !important;
+}
+
+/* Zilele selectate (la click) */
+.react-calendar__tile--active {
+    background-color: #3B82F6 !important; 
+    color: white !important;
+    border-radius: 50% !important;
+}
+
+/* Stilul pentru o zi selectată care este și un eveniment înscris */
+.enrolled-event-date.react-calendar__tile--active {
+    background-color: #4ECDC4 !important; 
+    color: #1F2937 !important; 
+    border: 3px solid #3B82F6 !important; /* Bordură pentru selecție */
+}

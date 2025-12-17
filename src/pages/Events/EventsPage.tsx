@@ -10,7 +10,7 @@ import eventImage4 from '../../assets/events/image_ev4.png';
 import eventImage5 from '../../assets/events/image_ev5.png';
 import eventImage6 from '../../assets/events/image_ev6.png';
 
-// Mock events data
+// Mock events data (Lăsat neschimbat)
 const mockEvents: PublicEvent[] = [
   {
     id: '1',
@@ -214,16 +214,15 @@ const EventsPage: React.FC = () => {
     <div 
       className="min-h-screen pt-16"
       style={{
-        background: `linear-gradient(180deg, 
-          #DFF3E4 0%, 
-          rgba(80, 76, 140, 0.8) 20%, 
-          #3F3176 30%, 
-          #2E1760 35%, 
-          #171738 50%, 
-          #2E1760 65%, 
-          #3F3176 70%, 
-          rgba(80, 76, 140, 0.85) 80%, 
-          #DFF3E4 100%
+        // =========================================================================
+        // NOU: GRADIENT DARK CU NUANȚĂ DE VERDE/TEAL
+        // =========================================================================
+        backgroundColor: '#0a1616', 
+        backgroundImage: `radial-gradient(
+            at top center, 
+            #1a3a38 0%,        
+            #0a1616 50%,       
+            #000000 100%       
         )`
       }}
     >
@@ -250,10 +249,8 @@ const EventsPage: React.FC = () => {
         {/* Events Grid */}
         {isLoading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <div className="w-12 h-12 border-3 border-white/20 border-t-[#4ECDC4] rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-white/60">Se încarcă evenimentele...</p>
-            </div>
+            <div className="w-12 h-12 border-3 border-white/20 border-t-[#4ECDC4] rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-white/60">Se încarcă evenimentele...</p>
           </div>
         ) : filteredEvents.length === 0 ? (
           <div className="text-center py-20">
