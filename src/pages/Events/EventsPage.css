@@ -1,0 +1,179 @@
+/* EventsPage.css - Dark Violet Theme Filters */
+
+/* Page container override for consistent dark theme */
+.events-page {
+  min-height: 100vh;
+  padding-top: 4rem;
+  background: transparent;
+}
+
+/* Filter container - dark glass effect */
+.events-filters-container {
+  background: rgba(17, 20, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Search input styling */
+.events-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  background: rgba(22, 27, 46, 0.8);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 0.875rem;
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.events-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.events-search-input:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.events-search-input:focus {
+  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+}
+
+/* Filter select styling */
+.events-filter-select {
+  width: 100%;
+  padding: 0.625rem 2rem 0.625rem 0.875rem;
+  background: rgba(22, 27, 46, 0.8);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 0.8125rem;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(167,139,250,0.7)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+.events-filter-select:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.events-filter-select:focus {
+  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.15);
+}
+
+.events-filter-select option {
+  background-color: #161b2e;
+  color: white;
+  padding: 0.5rem;
+}
+
+/* Filter label */
+.events-filter-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(167, 139, 250, 0.8);
+  margin-bottom: 0.375rem;
+  margin-left: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Reset button */
+.events-reset-btn {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+  border: 1px solid;
+}
+
+.events-reset-btn.active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.events-reset-btn.active:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.events-reset-btn.inactive {
+  background: rgba(22, 27, 46, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+/* Results count */
+.events-results-count {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(167, 139, 250, 0.15);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.events-results-count .active-indicator {
+  color: rgba(167, 139, 250, 0.9);
+  margin-left: 0.25rem;
+}
+
+/* Filter grid layout */
+.events-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .events-filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .events-filter-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Search icon positioning */
+.events-search-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(167, 139, 250, 0.6);
+  pointer-events: none;
+}
+
+/* Clear search button */
+.events-clear-search {
+  position: absolute;
+  right: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.events-clear-search:hover {
+  color: white;
+}

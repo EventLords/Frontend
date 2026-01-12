@@ -1,0 +1,432 @@
+/* OrganizerDashboard.css - Dark Violet Theme */
+/* Note: Primary button styles moved to global design system (index.css) */
+
+.organizer-dashboard {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .organizer-dashboard {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .organizer-dashboard {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Header */
+.organizer-dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .organizer-dashboard-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.organizer-dashboard-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .organizer-dashboard-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* New button uses global .uni-btn .uni-btn-primary from index.css */
+
+/* Stats Grid */
+.organizer-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .organizer-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Stat Card */
+.organizer-stat-card {
+  background: rgba(17, 20, 39, 0.6);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.organizer-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.organizer-stat-card:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.organizer-stat-card:hover::before {
+  opacity: 1;
+}
+
+.organizer-stat-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.organizer-stat-card-icon {
+  color: rgba(167, 139, 250, 0.8);
+}
+
+.organizer-stat-card-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.organizer-stat-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Events List */
+.organizer-events-list {
+  background: rgba(17, 20, 39, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.organizer-events-list-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+}
+
+.organizer-events-list-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* Event Item */
+.organizer-event-item {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.organizer-event-item:last-child {
+  border-bottom: none;
+}
+
+.organizer-event-item:hover {
+  background: rgba(167, 139, 250, 0.05);
+}
+
+.organizer-event-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .organizer-event-item-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.organizer-event-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.organizer-event-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.organizer-event-item-title {
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.organizer-event-item-status {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+
+.organizer-event-item-status.active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.organizer-event-item-status.inactive {
+  background: rgba(107, 114, 128, 0.2);
+  color: #9ca3af;
+}
+
+.organizer-event-item-status.draft {
+  background: rgba(234, 179, 8, 0.2);
+  color: #facc15;
+}
+
+.organizer-event-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.organizer-event-item-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Event Actions */
+.organizer-event-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.organizer-event-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  min-width: 90px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.organizer-event-action-btn.default {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.organizer-event-action-btn.default:hover {
+  background: rgba(167, 139, 250, 0.15);
+  color: white;
+  border-color: rgba(167, 139, 250, 0.3);
+  transform: translateY(-1px);
+}
+
+.organizer-event-action-btn.danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.organizer-event-action-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.35);
+  transform: translateY(-1px);
+}
+
+.organizer-event-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Empty State */
+.organizer-events-empty {
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.organizer-events-empty-icon {
+  margin: 0 auto 0.75rem;
+  opacity: 0.5;
+}
+
+.organizer-events-empty-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #a78bfa;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+
+.organizer-events-empty-link:hover {
+  text-decoration: underline;
+}
+
+/* Delete Modal */
+.organizer-delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.organizer-delete-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.organizer-delete-modal {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  background: #12162a;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.organizer-delete-modal-content {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.organizer-delete-modal-icon {
+  width: 4rem;
+  height: 4rem;
+  background: rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #f87171;
+}
+
+.organizer-delete-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.organizer-delete-modal-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+.organizer-delete-modal-desc span {
+  font-weight: 600;
+  color: white;
+}
+
+.organizer-delete-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.organizer-delete-modal-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.organizer-delete-modal-btn.cancel {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.organizer-delete-modal-btn.cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.organizer-delete-modal-btn.confirm {
+  background: #ef4444;
+  color: white;
+}
+
+.organizer-delete-modal-btn.confirm:hover {
+  background: #dc2626;
+}
+
+.organizer-delete-modal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dark theme scrollbar for events list */
+.scrollbar-dark::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-dark::-webkit-scrollbar-track {
+  background: #1a1040;
+  border-radius: 4px;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+  border-radius: 4px;
+}
+
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c4b5fd 0%, #8b5cf6 100%);
+}
+
+.scrollbar-dark {
+  scrollbar-width: thin;
+  scrollbar-color: #a78bfa #1a1040;
+}

@@ -1,0 +1,461 @@
+/* EventDetailsPage.css - Dark Violet Theme */
+
+.event-details-page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .event-details-page {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .event-details-page {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Back Button */
+.event-details-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.event-details-back-btn:hover {
+  color: white;
+}
+
+/* Main Grid */
+.event-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .event-details-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Main Content */
+.event-details-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Hero Image */
+.event-details-hero {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.event-details-hero-image {
+  width: 100%;
+  height: 16rem;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .event-details-hero-image {
+    height: 20rem;
+  }
+}
+
+.event-details-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent, transparent);
+}
+
+/* Category Badge */
+.event-details-category {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid;
+}
+
+/* Action Buttons */
+.event-details-actions {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.event-details-action-btn {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.event-details-action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.event-details-action-btn.favorite {
+  background: #ef4444;
+}
+
+/* Enrolled Badge */
+.event-details-enrolled-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+/* Title & Description */
+.event-details-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .event-details-title {
+    font-size: 1.875rem;
+  }
+}
+
+.event-details-description {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+/* Tags */
+.event-details-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.event-details-tag {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+}
+
+/* Agenda Card */
+.event-details-agenda {
+  background: rgba(17, 20, 39, 0.6);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.event-details-agenda-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.event-details-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-details-agenda-item {
+  display: flex;
+  gap: 1rem;
+}
+
+.event-details-agenda-time {
+  flex-shrink: 0;
+  width: 4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #a78bfa;
+}
+
+.event-details-agenda-content {
+  flex: 1;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-details-agenda-item:last-child .event-details-agenda-content {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.event-details-agenda-item-title {
+  font-weight: 500;
+  color: white;
+}
+
+.event-details-agenda-item-speaker {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+.event-details-agenda-item-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.25rem;
+}
+
+/* Sidebar */
+.event-details-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Info Card */
+.event-details-info-card {
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.event-details-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-details-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.event-details-info-icon {
+  color: #a78bfa;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.event-details-info-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.event-details-info-value {
+  font-weight: 500;
+  color: white;
+}
+
+.event-details-info-warning {
+  font-size: 0.75rem;
+  color: #facc15;
+  margin-top: 0.25rem;
+}
+
+/* Progress Bar */
+.event-details-progress {
+  margin-top: 1.5rem;
+}
+
+.event-details-progress-bar {
+  height: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.event-details-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.event-details-progress-fill.available {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+}
+
+.event-details-progress-fill.full {
+  background: #ef4444;
+}
+
+/* CTA Button */
+.event-details-cta {
+  margin-top: 1.5rem;
+}
+
+.event-details-cta-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.event-details-cta-btn.enroll {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  color: white;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.event-details-cta-btn.enroll:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.event-details-cta-btn.enrolled {
+  background: #22c55e;
+  color: white;
+}
+
+.event-details-cta-btn.enrolled:hover {
+  background: #16a34a;
+}
+
+.event-details-cta-btn.full {
+  background: rgba(107, 114, 128, 0.5);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+}
+
+.event-details-cta-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Organizer Card */
+.event-details-organizer-card {
+  background: rgba(17, 20, 39, 0.6);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.event-details-organizer-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.event-details-organizer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.event-details-organizer-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.event-details-organizer-name {
+  font-weight: 600;
+  color: white;
+}
+
+.event-details-organizer-faculty {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Loading State */
+.event-details-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.event-details-loading-content {
+  text-align: center;
+}
+
+.event-details-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #a78bfa;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+.event-details-loading-text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Not Found */
+.event-details-not-found {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.event-details-not-found-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.event-details-not-found-desc {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.event-details-not-found-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.event-details-not-found-link:hover {
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}

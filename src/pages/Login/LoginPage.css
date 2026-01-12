@@ -1,0 +1,338 @@
+/* LoginPage.css - Dark Violet Theme */
+
+/* Card entrance - simple slide up + fade */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form content staggered fade */
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0b0f1f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.login-container {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid rgba(196, 181, 253, 0.7);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.45);
+  background-color: #111427;
+  animation: cardAppear 0.6s ease-out forwards;
+}
+
+/* Background diagonal gradient */
+.login-bg-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.login-bg-base {
+  position: absolute;
+  inset: 0;
+  background-color: #111427;
+}
+
+.login-bg-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.95;
+  background: linear-gradient(to bottom, #8b5cf6, #4c1d95, #0b0f1f);
+  clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
+}
+
+.login-bg-line {
+  position: absolute;
+  inset: 0;
+  background: rgba(168, 85, 247, 0.9);
+  clip-path: polygon(39.2% 100%, 40% 100%, 60% 0, 59.2% 0);
+  filter: blur(0.2px);
+}
+
+/* Grid layout */
+.login-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 100%;
+  min-height: 500px;
+}
+
+@media (min-width: 768px) {
+  .login-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Left side text */
+.login-left {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .login-left {
+    display: flex;
+  }
+}
+
+.login-left-content {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.login-title-large {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+}
+
+/* Right side form */
+.login-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .login-right {
+    padding: 2.5rem;
+  }
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 360px;
+  animation: formAppear 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.login-title-mobile {
+  font-size: 1.875rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .login-title-mobile {
+    display: none;
+  }
+}
+
+/* Error message */
+.login-error {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 0.75rem;
+}
+
+.login-error p {
+  color: #fca5a5;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Input styling */
+.login-input-wrapper {
+  position: relative;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #12162a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 2.5rem;
+  padding-right: 0.75rem;
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.login-input:focus {
+  box-shadow: 0 0 0 2px rgba(196, 181, 253, 0.55);
+  border-color: rgba(196, 181, 253, 0.55);
+}
+
+.login-input:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.login-field-error {
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+/* Forgot password link */
+.login-forgot-link {
+  text-align: right;
+}
+
+.login-forgot-link a {
+  font-size: 0.75rem;
+  color: rgba(196, 181, 253, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.login-forgot-link a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c4b5fd;
+  transition: width 0.3s ease;
+}
+
+.login-forgot-link a:hover {
+  color: #c4b5fd;
+}
+
+.login-forgot-link a:hover::after {
+  width: 100%;
+}
+
+/* Submit button */
+.login-submit-btn {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #7c3aed 100%);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
+  font-weight: 800;
+  color: #0b0f1f;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.login-submit-btn:hover {
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.65);
+  transform: translateY(-1px);
+}
+
+.login-submit-btn:hover::before {
+  opacity: 1;
+}
+
+.login-submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
+}
+
+.login-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-submit-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Register link */
+.login-register-link {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-register-link a {
+  color: #c4b5fd;
+  font-weight: 700;
+}
+
+.login-register-link a:hover {
+  text-decoration: underline;
+}
+
+.login-spinner {
+  animation: spin 1s linear infinite;
+  height: 1rem;
+  width: 1rem;
+}

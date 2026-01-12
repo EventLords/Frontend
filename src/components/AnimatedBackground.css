@@ -1,0 +1,268 @@
+/* AnimatedBackground.css */
+
+/* Main container */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0b0f1f 0%, #12162a 40%, #1a1040 70%, #0b0f1f 100%);
+}
+
+/* Ambient glow orbs */
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+  top: -200px;
+  right: -150px;
+  filter: blur(60px);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 60%);
+  bottom: -150px;
+  left: -100px;
+  filter: blur(60px);
+  animation: pulse 10s ease-in-out infinite 2s;
+}
+
+/* Shapes container */
+.animated-bg-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Base floating shape */
+.floating-shape {
+  position: absolute;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Square shapes */
+.floating-shape.square {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(167, 139, 250, 0.4);
+  border-radius: 4px;
+  animation: floatUp 25s linear infinite;
+}
+
+.floating-shape.square:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 28s;
+}
+
+.floating-shape.square:nth-child(2) {
+  left: 30%;
+  animation-delay: 5s;
+  animation-duration: 22s;
+}
+
+.floating-shape.square:nth-child(3) {
+  left: 70%;
+  animation-delay: 8s;
+  animation-duration: 30s;
+}
+
+.floating-shape.square:nth-child(4) {
+  left: 85%;
+  animation-delay: 12s;
+  animation-duration: 26s;
+}
+
+/* Dot shapes */
+.floating-shape.dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(196, 181, 253, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+  animation: floatDiagonal 20s linear infinite;
+}
+
+.floating-shape.dot:nth-child(5) {
+  left: 15%;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.floating-shape.dot:nth-child(6) {
+  left: 45%;
+  animation-delay: 4s;
+  animation-duration: 22s;
+}
+
+.floating-shape.dot:nth-child(7) {
+  left: 60%;
+  animation-delay: 10s;
+  animation-duration: 16s;
+}
+
+.floating-shape.dot:nth-child(8) {
+  left: 80%;
+  animation-delay: 7s;
+  animation-duration: 24s;
+}
+
+/* Hexagon shapes */
+.floating-shape.hexagon {
+  width: 30px;
+  height: 17px;
+  background: transparent;
+  border-left: 2px solid rgba(139, 92, 246, 0.3);
+  border-right: 2px solid rgba(139, 92, 246, 0.3);
+  position: relative;
+  animation: floatUp 35s linear infinite;
+}
+
+.floating-shape.hexagon::before,
+.floating-shape.hexagon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.floating-shape.hexagon::before {
+  bottom: 100%;
+  border-bottom: 8px solid rgba(139, 92, 246, 0.3);
+}
+
+.floating-shape.hexagon::after {
+  top: 100%;
+  border-top: 8px solid rgba(139, 92, 246, 0.3);
+}
+
+.floating-shape.hexagon:nth-child(9) {
+  left: 20%;
+  animation-delay: 3s;
+  animation-duration: 32s;
+}
+
+.floating-shape.hexagon:nth-child(10) {
+  left: 55%;
+  animation-delay: 15s;
+  animation-duration: 28s;
+}
+
+.floating-shape.hexagon:nth-child(11) {
+  left: 75%;
+  animation-delay: 20s;
+  animation-duration: 35s;
+}
+
+/* Line shapes */
+.floating-shape.line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.4), transparent);
+  animation: floatDiagonal 15s linear infinite;
+}
+
+.floating-shape.line:nth-child(12) {
+  left: 25%;
+  animation-delay: 2s;
+  animation-duration: 18s;
+}
+
+.floating-shape.line:nth-child(13) {
+  left: 50%;
+  animation-delay: 8s;
+  animation-duration: 14s;
+}
+
+.floating-shape.line:nth-child(14) {
+  left: 65%;
+  animation-delay: 5s;
+  animation-duration: 20s;
+}
+
+/* Ring shapes */
+.floating-shape.ring {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(196, 181, 253, 0.25);
+  border-radius: 50%;
+  animation: floatUp 30s linear infinite;
+}
+
+.floating-shape.ring:nth-child(15) {
+  left: 8%;
+  animation-delay: 6s;
+  animation-duration: 26s;
+}
+
+.floating-shape.ring:nth-child(16) {
+  left: 40%;
+  animation-delay: 12s;
+  animation-duration: 32s;
+}
+
+.floating-shape.ring:nth-child(17) {
+  left: 90%;
+  animation-delay: 0s;
+  animation-duration: 28s;
+}
+
+/* Animations */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatDiagonal {
+  0% {
+    transform: translate(0, 100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(200px, -100vh) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}

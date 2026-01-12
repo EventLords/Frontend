@@ -1,0 +1,814 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BASE STYLES ===== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* ==========================================================================
+   UNIFIED DESIGN SYSTEM - UNIfy Platform
+   ========================================================================== */
+
+@layer components {
+  /* --------------------------------------------------------------------------
+     BUTTONS - Unified Button System
+     -------------------------------------------------------------------------- */
+  
+  /* Base button styles */
+  .uni-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .uni-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  /* Primary Button - Gradient violet */
+  .uni-btn-primary {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #8b5cf6 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
+  }
+
+  .uni-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .uni-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+  }
+
+  .uni-btn-primary:hover:not(:disabled)::before {
+    opacity: 1;
+  }
+
+  .uni-btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  /* Secondary Button - Ghost/Outline */
+  .uni-btn-secondary {
+    padding: 0.75rem 1.5rem;
+    background: rgba(167, 139, 250, 0.1);
+    color: #c4b5fd;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+  }
+
+  .uni-btn-secondary:hover:not(:disabled) {
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.5);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .uni-btn-secondary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  /* Danger Button */
+  .uni-btn-danger {
+    padding: 0.75rem 1.5rem;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .uni-btn-danger:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #fca5a5;
+    transform: translateY(-1px);
+  }
+
+  /* Ghost Button - Minimal */
+  .uni-btn-ghost {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid transparent;
+  }
+
+  .uni-btn-ghost:hover:not(:disabled) {
+    background: rgba(167, 139, 250, 0.1);
+    color: white;
+  }
+
+  /* Icon Button - Square */
+  .uni-btn-icon {
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+  }
+
+  .uni-btn-icon:hover:not(:disabled) {
+    background: rgba(167, 139, 250, 0.15);
+    border-color: rgba(167, 139, 250, 0.3);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* Small button variant */
+  .uni-btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Large button variant */
+  .uni-btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* --------------------------------------------------------------------------
+     CARDS - Unified Card System
+     -------------------------------------------------------------------------- */
+  
+  /* Base card */
+  .uni-card {
+    background: rgba(17, 20, 39, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .uni-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .uni-card:hover {
+    border-color: rgba(167, 139, 250, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.2);
+  }
+
+  .uni-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Card without hover effect */
+  .uni-card-static {
+    background: rgba(17, 20, 39, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 1rem;
+  }
+
+  /* Card padding variants */
+  .uni-card-p-sm { padding: 1rem; }
+  .uni-card-p-md { padding: 1.5rem; }
+  .uni-card-p-lg { padding: 2rem; }
+
+  /* --------------------------------------------------------------------------
+     MODALS - Unified Modal System
+     -------------------------------------------------------------------------- */
+  
+  /* Modal overlay */
+  .uni-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: uniFadeIn 0.2s ease-out;
+  }
+
+  /* Modal content */
+  .uni-modal {
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+    background: linear-gradient(180deg, #1a1625 0%, #12162a 100%);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: uniSlideIn 0.3s ease-out;
+  }
+
+  .uni-modal-lg {
+    max-width: 36rem;
+  }
+
+  .uni-modal-xl {
+    max-width: 48rem;
+  }
+
+  /* Modal header */
+  .uni-modal-header {
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .uni-modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .uni-modal-subtitle {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Modal body */
+  .uni-modal-body {
+    padding: 1.5rem;
+  }
+
+  /* Modal footer */
+  .uni-modal-footer {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .uni-modal-footer > * {
+    flex: 1;
+  }
+
+  /* Modal close button */
+  .uni-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .uni-modal-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+
+  /* --------------------------------------------------------------------------
+     INPUTS - Unified Input System
+     -------------------------------------------------------------------------- */
+  
+  .uni-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(22, 27, 46, 0.7);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .uni-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .uni-input:hover {
+    border-color: rgba(167, 139, 250, 0.35);
+  }
+
+  .uni-input:focus {
+    border-color: rgba(167, 139, 250, 0.55);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.12);
+  }
+
+  .uni-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(167,139,250,0.65)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+  }
+
+  .uni-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(167, 139, 250, 0.75);
+    margin-bottom: 0.375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* --------------------------------------------------------------------------
+     TITLES - Unified Title Animations
+     -------------------------------------------------------------------------- */
+  
+  .uni-title {
+    color: white;
+    font-weight: 700;
+    animation: uniTitleFade 0.5s ease-out;
+  }
+
+  .uni-title-gradient {
+    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .uni-title-glow {
+    animation: uniSubtleGlow 4s ease-in-out infinite;
+  }
+
+  /* --------------------------------------------------------------------------
+     BADGES / STATUS
+     -------------------------------------------------------------------------- */
+  
+  .uni-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+  }
+
+  .uni-badge-success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+
+  .uni-badge-warning {
+    background: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+  }
+
+  .uni-badge-danger {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+
+  .uni-badge-info {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+  }
+
+  .uni-badge-neutral {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+  }
+
+  /* --------------------------------------------------------------------------
+     LEGACY SUPPORT - Keep old classes working
+     -------------------------------------------------------------------------- */
+  
+  .btn-primary {
+    @apply px-6 py-3 font-medium rounded-xl transition-all duration-200;
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #8b5cf6 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 font-medium rounded-xl transition-all duration-200;
+    background: rgba(167, 139, 250, 0.1);
+    color: #c4b5fd;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.5);
+  }
+
+  .card {
+    @apply rounded-2xl p-6 transition-all duration-200;
+    background: rgba(17, 20, 39, 0.7);
+    border: 1px solid rgba(196, 181, 253, 0.15);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .card:hover {
+    border-color: rgba(196, 181, 253, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.33);
+  }
+
+  .card-gradient {
+    @apply rounded-2xl p-6;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(76, 29, 149, 0.1));
+    border: 1px solid rgba(196, 181, 253, 0.2);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #c4b5fd, #a78bfa);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* 3D Flip Animation Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+
+  /* Shimmer / Glow subtle animation for titles */
+  @keyframes subtleShimmer {
+    0%, 100% {
+      background-position: -200% center;
+    }
+    50% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes subtleGlow {
+    0%, 100% {
+      text-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
+    }
+    50% {
+      text-shadow: 0 0 30px rgba(167, 139, 250, 0.25);
+    }
+  }
+
+  /* Form transition animations */
+  @keyframes formFadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardFlipIn {
+    from {
+      opacity: 0;
+      transform: perspective(600px) rotateY(-5deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(600px) rotateY(0deg);
+    }
+  }
+
+  /* Global utility classes for animations */
+  .animate-shimmer-title {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(167, 139, 250, 0.15) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 200% auto;
+    animation: subtleShimmer 8s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .animate-subtle-glow {
+    animation: subtleGlow 4s ease-in-out infinite;
+  }
+
+  .animate-form-transition {
+    animation: formFadeSlide 0.4s ease-out;
+  }
+
+  .animate-card-flip {
+    animation: cardFlipIn 0.5s ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+/* ===== GLOBAL MODAL STYLES ===== */
+.modal-overlay {
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===== GLOBAL INTERACTIVE ELEMENTS ===== */
+
+/* Consistent hover lift effect for cards */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+}
+
+/* Consistent button base styles */
+.btn-violet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #8b5cf6 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  border: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.btn-violet:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+}
+
+.btn-violet:active {
+  transform: translateY(0);
+}
+
+/* Consistent secondary button */
+.btn-violet-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(167, 139, 250, 0.1);
+  color: #c4b5fd;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-violet-outline:hover {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Link hover underline effect */
+.link-underline {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Organizer dropdown notifications badge (CSS-only fix) */
+a[href="/organizer/notifications"] span.bg-red-500 {
+  min-width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px !important;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   UNIFIED KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes uniFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes uniSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes uniTitleFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes uniSubtleGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(167, 139, 250, 0.25);
+  }
+}
+
+@keyframes uniCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation delay utilities */
+.uni-delay-1 { animation-delay: 0.05s; }
+.uni-delay-2 { animation-delay: 0.1s; }
+.uni-delay-3 { animation-delay: 0.15s; }
+.uni-delay-4 { animation-delay: 0.2s; }
+.uni-delay-5 { animation-delay: 0.25s; }
+.uni-delay-6 { animation-delay: 0.3s; }
+
+/* Card enter animation */
+.uni-animate-card {
+  animation: uniCardEnter 0.4s ease-out backwards;
+}
+
+/* Scrollbar styling */
+.uni-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.uni-scrollbar::-webkit-scrollbar-track {
+  background: rgba(17, 20, 39, 0.5);
+  border-radius: 3px;
+}
+
+.uni-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+  border-radius: 3px;
+}
+
+.uni-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c4b5fd 0%, #8b5cf6 100%);
+}

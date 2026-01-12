@@ -1,0 +1,235 @@
+/* EventFilters.css - Minimalist Collapsible Filters for Student Dashboard */
+
+/* Main container - minimal */
+.student-filters-bar {
+  background: rgba(17, 20, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Top row: Search + Filter button */
+.student-filters-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Search wrapper */
+.student-filters-search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.student-filters-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(167, 139, 250, 0.45);
+  pointer-events: none;
+}
+
+.student-filters-search-input {
+  width: 100%;
+  padding: 0.5rem 2.25rem 0.5rem 2.25rem;
+  background: rgba(22, 27, 46, 0.5);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 0.625rem;
+  color: white;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.student-filters-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.student-filters-search-input:hover {
+  border-color: rgba(167, 139, 250, 0.28);
+}
+
+.student-filters-search-input:focus {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.08);
+}
+
+.student-filters-clear-search {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0.2rem;
+}
+
+.student-filters-clear-search:hover {
+  color: white;
+}
+
+/* Filter toggle button */
+.student-filters-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 0.625rem;
+  color: rgba(167, 139, 250, 0.85);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.student-filters-toggle-btn:hover {
+  background: rgba(167, 139, 250, 0.15);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+.student-filters-toggle-btn.active {
+  background: rgba(167, 139, 250, 0.18);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.student-filters-toggle-btn .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.25rem;
+  background: rgba(167, 139, 250, 0.75);
+  border-radius: 0.375rem;
+  color: #0b0f1f;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+/* Collapsible panel */
+.student-filters-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.student-filters-panel.open {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(167, 139, 250, 0.08);
+}
+
+/* Filters grid inside panel */
+.student-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .student-filters-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Filter item */
+.student-filters-item {
+  position: relative;
+}
+
+.student-filters-label {
+  display: block;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  color: rgba(167, 139, 250, 0.65);
+  margin-bottom: 0.2rem;
+  margin-left: 0.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.student-filters-select {
+  width: 100%;
+  padding: 0.4rem 1.75rem 0.4rem 0.5rem;
+  background: rgba(22, 27, 46, 0.4);
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  border-radius: 0.4rem;
+  color: white;
+  font-size: 0.6875rem;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='rgba(167,139,250,0.55)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+}
+
+.student-filters-select:hover {
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+.student-filters-select:focus {
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.student-filters-select option {
+  background-color: #161b2e;
+  color: white;
+}
+
+/* Reset button */
+.student-filters-reset-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid;
+}
+
+.student-filters-reset-btn.active {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.student-filters-reset-btn.active:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.student-filters-reset-btn.inactive {
+  background: rgba(22, 27, 46, 0.25);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+}
+
+/* Results count */
+.student-filters-results {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.5rem;
+}
+
+.student-filters-results .highlight {
+  color: rgba(167, 139, 250, 0.8);
+}

@@ -1,0 +1,279 @@
+/* CreateEventPage.css - Dark Violet Theme */
+
+/* Back Button */
+.create-event-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 0.5rem;
+  color: #c4b5fd;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.create-event-back-btn:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: white;
+}
+
+/* Form Card */
+.create-event-card {
+  background: rgba(17, 20, 39, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  overflow: hidden;
+}
+
+/* Header */
+.create-event-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(26, 16, 64, 0.5), rgba(46, 23, 96, 0.3));
+}
+
+.create-event-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Form */
+.create-event-form {
+  padding: 1.5rem;
+}
+
+/* Input Fields */
+.create-event-field {
+  margin-bottom: 1.25rem;
+}
+
+.create-event-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
+}
+
+.create-event-label-icon {
+  color: #a78bfa;
+}
+
+.create-event-label-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.create-event-input,
+.create-event-select,
+.create-event-textarea {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background: rgba(17, 20, 39, 0.6);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.create-event-input::placeholder,
+.create-event-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.create-event-input:focus,
+.create-event-select:focus,
+.create-event-textarea:focus {
+  outline: none;
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.1);
+}
+
+.create-event-input.error,
+.create-event-select.error,
+.create-event-textarea.error {
+  border-color: #f87171;
+}
+
+.create-event-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a78bfa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+.create-event-select option {
+  background: #12162a;
+  color: white;
+}
+
+.create-event-textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.create-event-error {
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* File Upload */
+.create-event-upload {
+  border: 2px dashed rgba(167, 139, 250, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-event-upload:hover {
+  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(167, 139, 250, 0.05);
+}
+
+.create-event-upload-icon {
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.create-event-upload-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
+
+.create-event-upload-hint {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Uploaded Files */
+.create-event-files {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.create-event-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: rgba(167, 139, 250, 0.05);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 0.5rem;
+}
+
+.create-event-file-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.create-event-file-name {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.create-event-file-size {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.create-event-file-remove {
+  padding: 0.25rem;
+  color: #f87171;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.create-event-file-remove:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* Submit Button */
+.create-event-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #c4b5fd, #7c3aed);
+  color: #0b0f1f;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-event-submit:hover {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.create-event-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success State */
+.create-event-success {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.create-event-success-card {
+  background: rgba(17, 20, 39, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  padding: 2rem;
+  text-align: center;
+}
+
+.create-event-success-icon {
+  width: 4rem;
+  height: 4rem;
+  background: rgba(34, 197, 94, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.create-event-success-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.create-event-success-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+}
