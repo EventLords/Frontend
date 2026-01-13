@@ -155,58 +155,65 @@ interface EventCardProps {
 }
 
 const EventCard: React.FC<EventCardProps> = ({ 
-  title, 
-  date, 
-  time, 
-  location, 
-  participants, 
-  organizer,
-  imageUrl 
+  title, 
+  date, 
+  time, 
+  location, 
+  participants, 
+  organizer,
+  imageUrl 
 }) => {
-  return (
-    <div className="bg-[#E7EEF9] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
-      {/* Event Image - Full width, rounded top */}
-      <div className="h-40 relative overflow-hidden rounded-t-2xl">
-        {imageUrl ? (
-          <img src={imageUrl} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 flex items-center justify-center">
-            <Calendar className="text-white/40" size={40} />
-          </div>
-        )}
-      </div>
+  return (
+    <div className="bg-[#E7EEF9] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all group h-full flex flex-col"> 
+      {/* NOU: h-full și flex flex-col pe cardul exterior */}
       
-      {/* Event Content */}
-      <div className="p-4">
-        <h3 className="font-semibold text-[#1a1a4e] text-base mb-2 group-hover:text-[#3F3176] transition-colors line-clamp-2">
-          {title}
-        </h3>
-        
-        <div className="space-y-1.5 text-sm text-gray-600 mb-3">
-          <div className="flex items-center gap-2">
-            <Calendar size={13} className="text-[#3F3176]" />
-            <span>{date} · {time}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin size={13} className="text-[#3F3176]" />
-            <span>{location}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Users size={13} className="text-[#3F3176]" />
-            <span>{participants} participanți</span>
-          </div>
-        </div>
-        
-        <p className="text-xs text-gray-500 mb-3">
-          Organizat de: <span className="text-[#3F3176] font-medium">{organizer}</span>
-        </p>
-        
-        <button className="w-full py-2 border border-[#1a1a4e] text-[#1a1a4e] font-medium rounded-full text-sm hover:bg-[#1a1a4e] hover:text-white transition-all">
-          Vezi detalii
-        </button>
-      </div>
-    </div>
-  );
+      {/* Event Image */}
+      <div className="h-40 relative overflow-hidden rounded-t-2xl shrink-0">
+        {/* shrink-0 asigură că imaginea nu este micșorată de flex-col */}
+        {imageUrl ? (
+          <img src={imageUrl} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 flex items-center justify-center">
+            <Calendar className="text-white/40" size={40} />
+          </div>
+        )}
+      </div>
+      
+      {/* Event Content - NOU: flex-grow pentru a ocupa tot spațiul */}
+      <div className="p-4 flex flex-col flex-grow">
+        <div className="flex-grow"> {/* NOU: Acest div preia spațiul variabil */}
+          <h3 className="font-semibold text-[#1a1a4e] text-base mb-2 group-hover:text-[#3F3176] transition-colors line-clamp-2">
+            {title}
+          </h3>
+          
+          <div className="space-y-1.5 text-sm text-gray-600 mb-3">
+            {/* ... (Meta Info rămâne neschimbat) ... */}
+            <div className="flex items-center gap-2">
+              <Calendar size={13} className="text-[#3F3176]" />
+              <span>{date} · {time}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <MapPin size={13} className="text-[#3F3176]" />
+            <span>{location}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Users size={13} className="text-[#3F3176]" />
+            <span>{participants} participanți</span>
+          </div>
+          </div>
+          
+          <p className="text-xs text-gray-500 mb-3">
+            Organizat de: <span className="text-[#3F3176] font-medium">{organizer}</span>
+          </p>
+        </div> {/* End flex-grow */}
+        
+        {/* Butonul CTA - Rămâne fix la baza containerului flex-col */}
+        <button className="w-full py-2 border border-[#1a1a4e] text-[#1a1a4e] font-medium rounded-full text-sm hover:bg-[#1a1a4e] hover:text-white transition-all shrink-0">
+          Vezi detalii
+        </button>
+      </div>
+    </div>
+  );
 };
 
 const PopularEventsSection: React.FC = () => {
