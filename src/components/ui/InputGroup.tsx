@@ -1,5 +1,6 @@
 import React from 'react';
 
+<<<<<<< HEAD
 interface SelectOption {
   value: string | number;
   label: string;
@@ -17,10 +18,23 @@ interface InputGroupProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   disabled?: boolean;
   name?: string;
+=======
+interface InputGroupProps {
+  label: string;
+  icon: React.ReactNode;
+  name: string;
+  type?: string;
+  options?: { value: string | number; label: string }[] | string[];
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+  placeholder?: string;
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
 }
 
 const InputGroup: React.FC<InputGroupProps> = ({
   label,
+<<<<<<< HEAD
   type = 'text',
   placeholder = '',
   icon,
@@ -128,8 +142,78 @@ const InputGroup: React.FC<InputGroupProps> = ({
           />
         </div>
       )}
+=======
+  icon,
+  name,
+  type = 'text',
+  options,
+  value,
+  onChange,
+  disabled = false,
+  placeholder,
+}) => {
+  const isSelect = options && options.length > 0;
+  const isTextarea = type === 'textarea';
+
+  return (
+    <div className="mb-6">
+      <label className="block text-white text-sm font-bold mb-2 uppercase tracking-widest">
+        {label}
+      </label>
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          {icon}
+        </div>
+        {isSelect ? (
+          <select
+            name={name}
+            value={value}
+            onChange={onChange}
+            disabled={disabled}
+            className="w-full pl-10 pr-3 py-3 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none"
+          >
+            <option value="" disabled>
+              Selectează {label.toLowerCase()}
+            </option>
+            {options.map((option, index) => (
+              <option
+                key={index}
+                value={typeof option === 'string' ? option : option.value}
+                className="bg-gray-800 text-white"
+              >
+                {typeof option === 'string' ? option : option.label}
+              </option>
+            ))}
+          </select>
+        ) : isTextarea ? (
+          <textarea
+            name={name}
+            value={value}
+            onChange={onChange}
+            disabled={disabled}
+            placeholder={placeholder}
+            className="w-full pl-10 pr-3 py-3 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+            rows={4}
+          />
+        ) : (
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            disabled={disabled}
+            placeholder={placeholder}
+            className="w-full pl-10 pr-3 py-3 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+        )}
+      </div>
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default InputGroup;
+=======
+export default InputGroup;
+>>>>>>> 202a381 (Local frontend state before syncing with remote)

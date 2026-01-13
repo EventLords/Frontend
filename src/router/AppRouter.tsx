@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { MainLayout, DashboardLayout, OrganizerLayout, StudentLayout } from '../layouts';
@@ -10,10 +11,29 @@ import {
   RegisterPage,
   ForgotPasswordPage 
 } from '../pages';
+=======
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { MainLayout, DashboardLayout, OrganizerLayout, StudentLayout } from "../layouts";
+
+import {
+  HomePage,
+  AboutPage,
+  EventsPage,
+  AdminDashboardPage,
+  ForgotPasswordPage,
+} from "../pages";
+
+// ✅ IMPORTĂ PAGINILE SEPARATE (NU AuthPage)
+import LoginPage from "../pages/Login/LoginPage";
+import RegisterPage from "../pages/Register/RegisterPage";
+
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
 import {
   OrganizerDashboard,
   CreateEventPage,
   EditEventPage,
+<<<<<<< HEAD
   EventParticipantsPage
 } from '../features/organizer/pages';
 import {
@@ -26,11 +46,23 @@ import {
   ProfilePage,
   SettingsPage
 } from '../features/users/pages';
+=======
+  EventParticipantsPage,
+} from "../features/organizer/pages";
+
+import { StudentDashboard, EventDetailsPage, CalendarPage } from "../features/students/pages";
+
+import { NotificationsPage, ProfilePage, SettingsPage } from "../features/users/pages";
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
 
 const AppRouter: React.FC = () => {
   return (
     <Routes>
+<<<<<<< HEAD
       {/* Auth Pages - No Layout */}
+=======
+      {/* ✅ AUTH ROUTES (separate) */}
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
       <Route path="/autentificare" element={<LoginPage />} />
       <Route path="/inregistrare" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -72,6 +104,7 @@ const AppRouter: React.FC = () => {
       {/* Admin Dashboard Layout Routes */}
       <Route path="/admin" element={<DashboardLayout />}>
         <Route index element={<AdminDashboardPage />} />
+<<<<<<< HEAD
         <Route path="evenimente" element={<AdminDashboardPage />} /> {/* Placeholder */}
         <Route path="utilizatori" element={<AdminDashboardPage />} /> {/* Placeholder */}
         <Route path="cereri" element={<AdminDashboardPage />} /> {/* Placeholder */}
@@ -79,6 +112,15 @@ const AppRouter: React.FC = () => {
       </Route>
 
       {/* 404 - Not Found */}
+=======
+        <Route path="evenimente" element={<AdminDashboardPage />} />
+        <Route path="utilizatori" element={<AdminDashboardPage />} />
+        <Route path="cereri" element={<AdminDashboardPage />} />
+        <Route path="setari" element={<AdminDashboardPage />} />
+      </Route>
+
+      {/* 404 */}
+>>>>>>> 202a381 (Local frontend state before syncing with remote)
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
