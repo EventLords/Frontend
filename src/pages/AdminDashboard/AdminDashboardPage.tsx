@@ -8,7 +8,7 @@ import { Users, FileCheck, Calendar, TrendingUp, XCircle, ChevronRight, Bell } f
 const mockAdminStats = {
     totalUsers: 1540,
     activeEvents: 45,
-    pendingOrgRequests: 8,
+    pendingOrgRequests: 7,
     pendingEventApprovals: 12,
 };
 
