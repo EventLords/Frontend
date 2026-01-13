@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { X, Bell, CheckCircle, AlertCircle, Trash2, CheckCheck } from 'lucide-react';
+import { X, Bell, CheckCheck, Trash2 } from 'lucide-react';
 import { StudentNotification } from '../../../types/student';
 
-interface StudentNotificationsModalProps {
+interface NotificationsModalProps {
   isOpen: boolean;
   onClose: () => void;
   notifications: StudentNotification[];
@@ -12,10 +12,10 @@ interface StudentNotificationsModalProps {
   onClearAll: () => void;
 }
 
-const StudentNotificationsModal: React.FC<StudentNotificationsModalProps> = ({
+const StudentNotificationsModal: React.FC<NotificationsModalProps> = ({
   isOpen,
   onClose,
-  notifications,
+  notifications = [],
   onMarkAsRead,
   onMarkAllAsRead,
   onClearAll
@@ -28,119 +28,60 @@ const StudentNotificationsModal: React.FC<StudentNotificationsModalProps> = ({
         onClose();
       }
     };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
-    };
+    if (isOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  const getNotificationIcon = (type: StudentNotification['type']) => {
+  const unreadCount = notifications?.filter(n => !n.isRead).length || 0;
+
+  const getTypeColor = (type: string) => {
     switch (type) {
-      case 'enrollment_confirmed':
-        return <CheckCircle size={12} className="text-green-600" />;
-      case 'event_reminder':
-        return <Bell size={12} className="text-blue-600" />;
-      case 'event_update':
-        return <AlertCircle size={12} className="text-yellow-600" />;
-      case 'event_cancelled':
-        return <X size={12} className="text-red-600" />;
-      default:
-        return <Bell size={12} className="text-gray-600" />;
+      case 'success': return 'bg-green-100 text-green-600';
+      case 'warning': return 'bg-yellow-100 text-yellow-600';
+      case 'error': return 'bg-red-100 text-red-600';
+      default: return 'bg-blue-100 text-blue-600';
     }
   };
-
-  const getIconBgColor = (type: StudentNotification['type']) => {
-    switch (type) {
-      case 'enrollment_confirmed':
-        return 'bg-green-100';
-      case 'event_reminder':
-        return 'bg-blue-100';
-      case 'event_update':
-        return 'bg-yellow-100';
-      case 'event_cancelled':
-        return 'bg-red-100';
-      default:
-        return 'bg-gray-100';
-    }
-  };
-
-  const formatTime = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diff = now.getTime() - date.getTime();
-    const minutes = Math.floor(diff / 60000);
-    const hours = Math.floor(diff / 3600000);
-    const days = Math.floor(diff / 86400000);
-
-    if (minutes < 60) return `acum ${minutes} min`;
-    if (hours < 24) return `acum ${hours}h`;
-    if (days < 7) return `acum ${days} zile`;
-    return date.toLocaleDateString('ro-RO');
-  };
-
-  const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <div
+    <div 
       ref={modalRef}
-      className="absolute top-16 right-4 w-80 md:w-96 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden animate-fade-in"
-      style={{
-        animation: 'slideDown 0.2s ease-out'
-      }}
+      className="absolute top-16 right-4 w-80 md:w-96 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+      style={{ animation: 'slideDown 0.2s ease-out' }}
     >
-      {/* Header */}
-      <div className="bg-gradient-to-r from-[#3F3176] to-[#5a4d8a] px-4 py-3 flex items-center justify-between">
+      <div className="bg-gradient-to-r from-[#0D0D2B] to-[#1a1a4e] px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Bell size={18} className="text-white" />
           <h3 className="text-white font-semibold text-sm">Notificări</h3>
+          {unreadCount > 0 && (
+            <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+              {unreadCount} noi
+            </span>
+          )}
         </div>
-        <button
-          onClick={onClose}
-          className="text-white/80 hover:text-white transition-colors"
-        >
+        <button onClick={onClose} className="text-white/80 hover:text-white">
           <X size={18} />
         </button>
       </div>
 
-      {/* Actions */}
       {notifications.length > 0 && (
-        <div className="px-4 py-2 border-b border-gray-100 flex justify-between">
-          <button
-            onClick={onMarkAllAsRead}
-            disabled={unreadCount === 0}
-            className="text-xs text-[#3F3176] hover:underline flex items-center gap-1 disabled:opacity-50"
-          >
-            <CheckCheck size={12} />
-            Marchează toate ca citite
+        <div className="px-4 py-2 border-b border-gray-100 flex justify-between bg-gray-50">
+          <button onClick={onMarkAllAsRead} className="text-xs text-[#3F3176] hover:underline flex items-center gap-1 font-medium">
+            <CheckCheck size={12} /> Marchează tot
           </button>
-          <button
-            onClick={onClearAll}
-            className="text-xs text-red-500 hover:underline flex items-center gap-1"
-          >
-            <Trash2 size={12} />
-            Șterge toate
+          <button onClick={onClearAll} className="text-xs text-red-500 hover:underline flex items-center gap-1 font-medium">
+            <Trash2 size={12} /> Șterge tot
           </button>
         </div>
       )}
 
-      {/* Notifications List */}
       <div className="max-h-80 overflow-y-auto">
         {notifications.length === 0 ? (
           <div className="px-4 py-8 text-center text-gray-400">
             <Bell size={32} className="mx-auto mb-2 opacity-50" />
-            <p className="text-sm">Nu ai notificări</p>
+            <p className="text-sm">Nu ai notificări noi</p>
           </div>
         ) : (
           notifications.map((notification) => (
@@ -152,18 +93,23 @@ const StudentNotificationsModal: React.FC<StudentNotificationsModalProps> = ({
               }`}
             >
               <div className="flex items-start gap-3">
-                <div className={`p-1.5 rounded-full ${getIconBgColor(notification.type)}`}>
-                  {getNotificationIcon(notification.type)}
+                <div className={`p-1.5 rounded-full mt-0.5 ${getTypeColor(notification.type)}`}>
+                  <Bell size={12} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-semibold text-gray-800">
-                    {notification.title}
-                  </h4>
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className={`text-sm truncate ${!notification.isRead ? 'font-bold text-gray-900' : 'text-gray-700'}`}>
+                      {notification.title}
+                    </h4>
+                    {!notification.isRead && <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />}
+                  </div>
+                  {/* FIX: Am lăsat doar .message (fără .description) */}
                   <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">
                     {notification.message}
                   </p>
+                  {/* FIX: Am lăsat doar .createdAt (fără .date) */}
                   <p className="text-[10px] text-gray-400 mt-1">
-                    {formatTime(notification.createdAt)}
+                    {new Date(notification.createdAt).toLocaleDateString('ro-RO')}
                   </p>
                 </div>
               </div>
@@ -172,31 +118,11 @@ const StudentNotificationsModal: React.FC<StudentNotificationsModalProps> = ({
         )}
       </div>
 
-      {/* Footer */}
-      {notifications.length > 0 && (
-        <div className="px-4 py-3 bg-gray-50 text-center border-t border-gray-100">
-          <Link 
-            to="/student/notifications"
-            onClick={onClose}
-            className="text-sm text-[#3F3176] hover:underline font-medium"
-          >
-            Vezi toate notificările
-          </Link>
-        </div>
-      )}
-
-      <style>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <div className="px-4 py-3 bg-gray-50 text-center border-t border-gray-100">
+        <Link to="/student/notifications" onClick={onClose} className="text-sm text-[#0D0D2B] hover:underline font-bold">
+          Vezi toate notificările
+        </Link>
+      </div>
     </div>
   );
 };

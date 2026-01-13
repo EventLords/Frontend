@@ -119,14 +119,17 @@
   }
 }
 .student-main-gradient {
-  /* Am eliminat menta deschisă și am început direct cu un mov foarte închis */
   background: linear-gradient(180deg, 
-    #171738 0%,    /* Bleumarin foarte închis la început */
-    #2E1760 15%,   /* Mov profund */
-    #3F3176 30%,   /* Indigo */
-    #2E1760 50%,   /* Revine la mov profund în mijloc */
-    #171738 70%,   /* Din nou bleumarin închis */
-    #0F0F2D 100%   /* Aproape negru la final */
+    #A8E6CF 0%, 
+    #DFF3E4 15%, 
+    rgba(80, 76, 140, 0.9) 30%, 
+    #3F3176 40%, 
+    #2E1760 45%, 
+    #171738 60%, 
+    #2E1760 75%, 
+    #3F3176 80%, 
+    rgba(80, 76, 140, 0.9) 90%, 
+    #A8E6CF 100%
   ) !important;
   background-attachment: fixed;
 }
