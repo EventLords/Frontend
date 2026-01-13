@@ -34,7 +34,7 @@ const StudentDashboard: React.FC = () => {
   // Culorile pentru gradientul de fundal (păstrăm estetica)
   const darkBgColor = '#3F3176';
   const secondaryColor = '#7B6DB5';
-  const highlightColor = '#e386ffff';
+  const highlightColor = '#e796ffff';
 
   useEffect(() => {
     const fetchEvents = async () => {
