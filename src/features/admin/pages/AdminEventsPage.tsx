@@ -68,12 +68,17 @@ const AdminEventsPage: React.FC = () => {
         title: e.title || e.name || "Eveniment fără titlu",
         date: e.date || e.date_start,
         location: e.location || "Locație nespecificată",
-        organizer:
-          e.organizer_name || e.users?.organization_name || e.users?.first_name
-            ? `${e.users.first_name} ${e.users.last_name}`
-            : e.users?.email
-            ? e.users.email
-            : "Organizator necunoscut",
+        organizer: (() => {
+          // Priority: organizer_name > organization_name > first_name + last_name > email > fallback
+          if (e.organizer_name) return e.organizer_name;
+          if (e.users?.organization_name) return e.users.organization_name;
+          if (e.users?.first_name && e.users?.last_name) {
+            return `${e.users.first_name} ${e.users.last_name}`;
+          }
+          if (e.users?.first_name) return e.users.first_name;
+          if (e.users?.email) return e.users.email;
+          return "Organizator necunoscut";
+        })(),
         status: e.status,
         participants_count: e.participants_count || 0,
       }));

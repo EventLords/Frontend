@@ -59,13 +59,15 @@ const EventApprovalPage: React.FC = () => {
       const mappedEvents: EventApproval[] = data.map((e: any) => ({
         id: e.id_event.toString(),
         title: e.title || e.name || "Fără titlu",
-        organizerName:
-          e.users?.organization_name ||
-          (e.users?.first_name
-            ? `${e.users.first_name} ${e.users.last_name}`
-            : null) ||
-          e.users?.email ||
-          `Organizator #${e.organizer_id}`,
+        organizerName: (() => {
+          if (e.users?.organization_name) return e.users.organization_name;
+          if (e.users?.first_name && e.users?.last_name) {
+            return `${e.users.first_name} ${e.users.last_name}`;
+          }
+          if (e.users?.first_name) return e.users.first_name;
+          if (e.users?.email) return e.users.email;
+          return `Organizator #${e.organizer_id}`;
+        })(),
         submissionDate: new Date(e.created_at),
         eventType: "new",
         status: e.status,

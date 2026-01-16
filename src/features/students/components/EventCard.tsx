@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Calendar,
-  Clock,
   MapPin,
   Users,
   User,
@@ -79,23 +78,32 @@ const EventCard: React.FC<EventCardProps> = ({
     if (onRemoveFavorite) onRemoveFavorite(event.id);
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDateTime = (dateString: string, timeString?: string) => {
     if (!dateString) return "Nespecificat";
-    return new Date(dateString).toLocaleDateString("ro-RO", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  };
-
-  const formatTime = (dateString: string) => {
-    if (!dateString) return "";
-    return new Date(dateString).toLocaleTimeString("ro-RO", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: "Europe/Bucharest",
-    });
+    
+    // Parse date - handle both ISO format and YYYY-MM-DD
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "Nespecificat";
+    
+    // Format date as DD.MM.YYYY
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    const formattedDate = `${day}.${month}.${year}`;
+    
+    // Handle time - use timeString if provided, otherwise extract from date
+    let formattedTime = "";
+    if (timeString) {
+      // Time is already in HH:mm format
+      formattedTime = timeString.substring(0, 5);
+    } else {
+      // Extract time from ISO date string
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      formattedTime = `${hours}:${minutes}`;
+    }
+    
+    return `${formattedDate} • ${formattedTime}`;
   };
 
   const categoryKey = event.category?.toLowerCase() || "";
@@ -188,9 +196,7 @@ const EventCard: React.FC<EventCardProps> = ({
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-sm text-white/70">
             <Calendar size={14} className="text-[#a78bfa]" />
-            <span>{formatDate(event.date)}</span>
-            <Clock size={14} className="text-[#a78bfa] ml-2" />
-            <span>{formatTime(event.time)}</span>
+            <span>{formatDateTime(event.date, event.time)}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-white/70">
             <MapPin size={14} className="text-[#a78bfa]" />

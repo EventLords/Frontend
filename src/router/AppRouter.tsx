@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Link } from "react-router-dom";
 import {
   MainLayout,
   DashboardLayout,
@@ -137,12 +137,12 @@ const NotFoundPage: React.FC = () => (
     <div className="text-center">
       <h1 className="text-9xl font-display font-bold text-white mb-4">404</h1>
       <p className="text-xl text-white/60 mb-8">Page not found</p>
-      <a
-        href="/"
+      <Link
+        to="/"
         className="px-6 py-3 bg-gradient-to-r from-[#a78bfa] to-[#7c3aed] text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
       >
         Back to Home
-      </a>
+      </Link>
     </div>
   </div>
 );

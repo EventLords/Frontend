@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, Bell, User, Settings, LogOut } from "lucide-react";
 import logo from "../assets/events/logo.png";
+import { formatNotificationCount } from "../utils/formatNotificationCount";
 
 import NotificationsModal from "../features/organizer/components/NotificationsModal";
 
@@ -219,7 +220,7 @@ const OrganizerHeader: React.FC = () => {
                 <Bell size={20} />
                 {unreadCount > 0 && (
                   <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-[#0D0D2B]">
-                    {unreadCount}
+                    {formatNotificationCount(unreadCount)}
                   </span>
                 )}
               </button>
@@ -301,7 +302,7 @@ const OrganizerHeader: React.FC = () => {
                       <span className="flex-1 text-left">Notificări</span>
                       {unreadCount > 0 && (
                         <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">
-                          {unreadCount}
+                          {formatNotificationCount(unreadCount)}
                         </span>
                       )}
                     </Link>
@@ -373,7 +374,7 @@ const OrganizerHeader: React.FC = () => {
               Notificări
               {unreadCount > 0 && (
                 <span className="ml-2 bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">
-                  {unreadCount}
+                  {formatNotificationCount(unreadCount)}
                 </span>
               )}
             </Link>

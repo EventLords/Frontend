@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import logo from "../assets/events/logo.png";
+import { formatNotificationCount } from "../utils/formatNotificationCount";
 import StudentNotificationsModal from "../features/students/components/StudentNotificationsModal";
 import { profileService } from "../services/profileService";
 import { notificationsService } from "../services/notificationsService";
@@ -298,7 +299,7 @@ const StudentHeader: React.FC = () => {
                       <span className="flex-1 text-left">Notificări</span>
                       {unreadCount > 0 && (
                         <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">
-                          {unreadCount}
+                          {formatNotificationCount(unreadCount)}
                         </span>
                       )}
                     </Link>

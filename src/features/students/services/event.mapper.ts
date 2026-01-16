@@ -47,15 +47,24 @@ export const mapApiEventToStudentEvent = (e: any): StudentEvent => {
 
   // --- MAPARE CÂMPURI ---
 
+  // Extract time from ISO date string (e.g., "2026-01-25T11:00:00.000Z" -> "11:00")
+  const extractTime = (isoString: string): string => {
+    if (!isoString) return "";
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return "";
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
   return {
     id: String(e.id_event),
     name: e.title,
     description: e.description || "",
     category: e.event_types?.name || "Altele",
-    // Păstrăm string-ul ISO complet pentru formatare corectă cu timezone
     date: e.date_start || "",
-    time: e.date_start || "",
-    endTime: "",
+    time: extractTime(e.date_start),
+    endTime: e.date_end ? extractTime(e.date_end) : "",
     location: e.location || "Nespecificată",
     image: imageUrl,
 

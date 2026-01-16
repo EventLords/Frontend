@@ -155,13 +155,12 @@ const BenefitsSection: React.FC = () => {
    POPULAR EVENTS SECTION (FETCHED FROM API)
 =========================================== */
 interface EventCardProps {
-  id: string; // Add ID for linking
+  id: string;
   title: string;
-  date: string;
-  time: string;
+  date: string; // Pre-formatted as DD.MM.YYYY • HH:mm
   location: string;
   participants: number;
-  maxParticipants: number; // Add maxParticipants
+  maxParticipants: number;
   organizer: string;
   imageUrl?: string;
 }
@@ -170,7 +169,6 @@ const EventCard: React.FC<EventCardProps> = ({
   id,
   title,
   date,
-  time,
   location,
   participants,
   maxParticipants,
@@ -201,9 +199,7 @@ const EventCard: React.FC<EventCardProps> = ({
         <div className="home-event-card-info">
           <div className="home-event-card-info-item">
             <Calendar size={13} />
-            <span>
-              {date} · {time}
-            </span>
+            <span>{date}</span>
           </div>
           <div className="home-event-card-info-item">
             <MapPin size={13} />
@@ -248,17 +244,26 @@ const PopularEventsSection: React.FC = () => {
         });
 
         // Map API response (StudentEvent[]) to EventCardProps
-        const mappedEvents = data.slice(0, 3).map((e: StudentEvent) => ({
-          id: e.id,
-          title: e.name,
-          date: new Date(e.date).toLocaleDateString("ro-RO"),
-          time: e.time,
-          location: e.location,
-          participants: e.currentParticipants,
-          maxParticipants: e.maxParticipants,
-          organizer: e.organizer.name,
-          imageUrl: e.image,
-        }));
+        const mappedEvents = data.slice(0, 3).map((e: StudentEvent) => {
+          // Format date as DD.MM.YYYY • HH:mm
+          const dateObj = new Date(e.date);
+          const day = dateObj.getDate().toString().padStart(2, "0");
+          const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
+          const year = dateObj.getFullYear();
+          const time = e.time ? e.time.substring(0, 5) : "00:00";
+          const formattedDate = `${day}.${month}.${year} • ${time}`;
+          
+          return {
+            id: e.id,
+            title: e.name,
+            date: formattedDate,
+            location: e.location,
+            participants: e.currentParticipants,
+            maxParticipants: e.maxParticipants,
+            organizer: e.organizer.name,
+            imageUrl: e.image,
+          };
+        });
 
         setEvents(mappedEvents);
       } catch (err) {

@@ -17,6 +17,7 @@ import {
   EventFilters as FilterType,
 } from "../../../types/student";
 import { mapApiEventToStudentEvent } from "../services/event.mapper";
+import { ChatAssistant, ChatProvider } from "../../../components/ChatAssistant";
 
 import "./StudentDashboard.css";
 
@@ -253,6 +254,11 @@ const StudentDashboard: React.FC = () => {
           )}
         </>
       )}
+
+      {/* AI Chat Assistant - Floating Widget (Frontend-only, uses ChatContext) */}
+      <ChatProvider>
+        <ChatAssistant />
+      </ChatProvider>
     </div>
   );
 };
